@@ -1,6 +1,8 @@
 const socket=io()
 const form = document.getElementById("form");
 const btnProductos = document.getElementById("btn-products")
+const btnShow = document.getElementById("btn-show")
+
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -8,7 +10,7 @@ form.addEventListener("submit", (e) => {
   const datForm = new FormData(e.target)
   const product = Object.fromEntries(datForm)
   console.log(product)
-  socket.emit('nuevo producto', product )
+  socket.emit('nuevoProducto', product);
   e.target.reset()
 });
 
@@ -17,3 +19,6 @@ btnProductos.addEventListener('click', ()=>{
         console.log(productos)
     })
 })
+btnShow.addEventListener('click', () => {
+  window.location.href = '/home'; 
+});
